@@ -23,25 +23,25 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDtoFull> getAll() {
         return userDao.getAll().stream()
-                .map(userMapper::mapToDto)
+                .map(userMapper::mapToDtoFull)
                 .collect(Collectors.toList());
     }
 
     @Override
     public UserDtoFull getById(Long id) {
-        return userMapper.mapToDto(userDao.getById(id));
+        return userMapper.mapToDtoFull(userDao.getById(id));
     }
 
     @Override
     public UserDtoFull create(UserDtoCreate userDto) {
-        User user = userDao.create(userMapper.mapToEntity(userDto));
-        return userMapper.mapToDto(user);
+        User user = userDao.create(userMapper.mapCreateToEntity(userDto));
+        return userMapper.mapToDtoFull(user);
     }
 
     @Override
     public UserDtoFull update(UserDtoFull userDto) {
-        User user = userDao.update(userMapper.mapToEntityFull(userDto));
-        return userMapper.mapToDto(user);
+        User user = userDao.update(userMapper.mapFullToEntity(userDto));
+        return userMapper.mapToDtoFull(user);
     }
 
     @Override

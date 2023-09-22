@@ -2,9 +2,9 @@ package org.example.mapper;
 
 public interface BaseMapper<E, T, K> {
 
-    E mapToEntity(T t);
+    E mapCreateToEntity(T t);
 
-    E mapToEntityFull(K k);
+    E mapFullToEntity(K k);
 
-    K mapToDto(E e);
+    K mapToDtoFull(E e);
 }
