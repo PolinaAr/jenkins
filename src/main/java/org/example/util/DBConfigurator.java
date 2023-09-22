@@ -8,13 +8,13 @@ public class DBConfigurator {
 
     private static volatile Connection connection;
 //    private static ResourceReader reader = new ResourceReader();
-//    private static String url = reader.getBdUrl();
+//    private static String url = reader.getDbUrl();
 //    private static String user = reader.getDbUser();
 //    private static String password = reader.getDbPassword();
 
-    private static String url = "jdbc:postgresql://127.0.0.1:5432/andersen";
-    private static String user = "postgres";
-    private static String password = "root";
+    private static String url = "jdbc:postgresql://192.168.0.106:5432/andersen";
+    private static String user = "andersen";
+    private static String password = "andersen";
     public static Connection getConnection (){
         if (connection == null){
             synchronized (DBConfigurator.class){

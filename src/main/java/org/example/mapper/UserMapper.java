@@ -39,7 +39,7 @@ public class UserMapper implements BaseMapper<User, UserDtoCreate, UserDtoFull> 
         userDto.setId(user.getId());
         userDto.setName(user.getName());
         userDto.setLastname(user.getLastname());
-        userDto.setAge(userDto.getAge());
+        userDto.setAge(user.getAge());
         return userDto;
     }
 }

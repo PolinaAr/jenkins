@@ -31,7 +31,7 @@ public class ResourceReader {
         return properties.getProperty("db.password");
     }
 
-    public String getBdUrl() {
+    public String getDbUrl() {
         return properties.getProperty("db.url");
     }
 }

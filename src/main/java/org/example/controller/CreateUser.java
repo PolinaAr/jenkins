@@ -5,6 +5,7 @@ import org.example.service.UserDtoFull;
 import org.example.service.UserService;
 import org.example.service.UserServiceImpl;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,17 +19,23 @@ public class CreateUser extends HttpServlet {
     private final UserService userService = UserServiceImpl.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDtoFull userDtoFull = userService.create(getUserDtoCreate(req));
-        req.setAttribute("user", userDtoFull);
-        req.getRequestDispatcher("jsp/getUser.jsp");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/createUser.jsp");
+        requestDispatcher.forward(request, response);
     }
 
-    private UserDtoCreate getUserDtoCreate(HttpServletRequest req) {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDtoFull userDtoFull = userService.create(getUserDtoCreate(request));
+//        request.setAttribute("user", userDtoFull);
+//        request.getRequestDispatcher("jsp/getUser.jsp");
+    }
+
+    private UserDtoCreate getUserDtoCreate(HttpServletRequest request) {
         return new UserDtoCreate(
-                req.getParameter("name"),
-                req.getParameter("lastname"),
-                Integer.parseInt(req.getParameter("age"))
+                request.getParameter("name"),
+                request.getParameter("lastname"),
+                Integer.parseInt(request.getParameter("age"))
         );
     }
 }

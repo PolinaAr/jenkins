@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user")
+@WebServlet("/users")// надо добавить ?id=
 public class UserController extends HttpServlet {
 
     private final UserService userService = UserServiceImpl.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.valueOf(req.getParameter("id"));
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Long id = Long.parseLong(request.getParameter("id"));
         UserDtoFull user = userService.getById(id);
-        req.setAttribute("user", user);
-        req.getRequestDispatcher("jsp/getUser.jsp");
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
     }
 
-    @Override
+/*    @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPut(req, resp);
     }
@@ -33,6 +33,6 @@ public class UserController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp);
-    }
+    }*/
 
 }
