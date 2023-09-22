@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao{
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
-                return processResultSetGet(resultSet);
+                return getUserFromResultSet(resultSet);
             } else {
                 throw  new EntityNotFoundException("There is no user with id: " + id);
             }
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    private User processResultSetGet(ResultSet resultSet) throws SQLException {
+    private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getLong("id"));
         user.setName(resultSet.getString("name"));
@@ -62,7 +62,7 @@ public class UserDaoImpl implements UserDao{
             PreparedStatement statement = DBConfigurator.getConnection().prepareStatement(GET_ALL);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-                users.add(processResultSetGet(resultSet));
+                users.add(getUserFromResultSet(resultSet));
             }
         } catch (SQLException e) {
             throw new EntityNotFoundException("Can't get all users");

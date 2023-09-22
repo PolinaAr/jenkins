@@ -15,7 +15,7 @@ public class UserMapper implements BaseMapper<User, UserDtoCreate, UserDtoFull> 
     }
 
     @Override
-    public User mapToEntity(UserDtoCreate userDto) {
+    public User mapCreateToEntity(UserDtoCreate userDto) {
         User user = new User();
         user.setName(userDto.getName());
         user.setLastname(userDto.getLastname());
@@ -24,7 +24,7 @@ public class UserMapper implements BaseMapper<User, UserDtoCreate, UserDtoFull> 
     }
 
     @Override
-    public User mapToEntityFull(UserDtoFull userDto) {
+    public User mapFullToEntity(UserDtoFull userDto) {
         User user = new User();
         user.setId(userDto.getId());
         user.setName(userDto.getName());
@@ -34,7 +34,7 @@ public class UserMapper implements BaseMapper<User, UserDtoCreate, UserDtoFull> 
     }
 
     @Override
-    public UserDtoFull mapToDto(User user) {
+    public UserDtoFull mapToDtoFull(User user) {
         UserDtoFull userDto = new UserDtoFull();
         userDto.setId(user.getId());
         userDto.setName(user.getName());
