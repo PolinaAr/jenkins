@@ -1,4 +1,4 @@
-package org.example;
+package org.example.dao;
 
 import java.util.Objects;
 
@@ -7,19 +7,6 @@ public class User {
     private String name;
     private String lastname;
     private int age;
-
-    public User(String name, String lastname, int age) {
-        this.name = name;
-        this.lastname = lastname;
-        this.age = age;
-    }
-
-    public User(Long id, String name, String lastname, int age) {
-        this.id = id;
-        this.name = name;
-        this.lastname = lastname;
-        this.age = age;
-    }
 
     public Long getId() {
         return id;
