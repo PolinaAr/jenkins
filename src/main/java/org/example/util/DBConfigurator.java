@@ -7,14 +7,16 @@ import java.sql.SQLException;
 public class DBConfigurator {
 
     private static volatile Connection connection;
-//    private static ResourceReader reader = new ResourceReader();
-//    private static String url = reader.getDbUrl();
-//    private static String user = reader.getDbUser();
-//    private static String password = reader.getDbPassword();
 
-    private static String url = "jdbc:postgresql://127.0.0.1:5432/andersen";
-    private static String user = "postgres";
-    private static String password = "root";
+    private static PropertiesLoader props = new PropertiesLoader();
+
+    private static String url = props.getProperty("db.url");
+    private static String user = props.getProperty("db.user");
+    private static String password = props.getProperty("db.password");
+
+//    private static String url = "jdbc:postgresql://192.168.43.142:5432/test";
+//    private static String user = "dima";
+//    private static String password = "dima";
     public static Connection getConnection (){
         if (connection == null){
             synchronized (DBConfigurator.class){
