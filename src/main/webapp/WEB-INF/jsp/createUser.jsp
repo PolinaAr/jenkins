@@ -12,7 +12,7 @@
     <form action="" method="post">
         <label for="name-input"> Name: </label><input id="name-input" name="name" type="text" required/><br/>
         <label for="lastname-input">Lastname: </label><input id="lastname-input" name="lastname" type="text" required/><br/>
-        <label for="age-input">Email: </label><input id="age-input" name="email" type="number" required/><br/>
+        <label for="age-input">Age: </label><input id="age-input" name="age" type="number" required/><br/>
         <input type="submit" value="Create"/>
     </form>
 </div>

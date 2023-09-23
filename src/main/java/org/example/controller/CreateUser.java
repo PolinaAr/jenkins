@@ -27,8 +27,8 @@ public class CreateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDtoFull userDtoFull = userService.create(getUserDtoCreate(request));
-//        request.setAttribute("user", userDtoFull);
-//        request.getRequestDispatcher("jsp/getUser.jsp");
+        request.setAttribute("user", userDtoFull);
+        request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp");
     }
 
     private UserDtoCreate getUserDtoCreate(HttpServletRequest request) {
