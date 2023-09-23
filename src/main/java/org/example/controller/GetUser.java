@@ -10,18 +10,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/users")// надо добавить ?id=
-public class UserController extends HttpServlet {
+public class GetUser extends HttpServlet {
 
     private final UserService userService = UserServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long id = Long.parseLong(request.getParameter("id"));
-        UserDtoFull user = userService.getById(id);
-        request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
+        String param = request.getParameter("id");
+        if (param != null) {
+            Long id = Long.parseLong(param);
+            UserDtoFull user = userService.getById(id);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
+        } else {
+            List<UserDtoFull> users = userService.getAll();
+            request.setAttribute("users", users);
+            request.getRequestDispatcher("/WEB-INF/jsp/getAllUsers.jsp").forward(request, response);
+        }
     }
 
 }

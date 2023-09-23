@@ -9,7 +9,7 @@
 </div>
 <div>
     <p>Enter values</p>
-    <form action="" method="post">
+    <form method="post">
         <label for="name-input"> Name: </label><input id="name-input" name="name" type="text" required/><br/>
         <label for="lastname-input">Lastname: </label><input id="lastname-input" name="lastname" type="text" required/><br/>
         <label for="age-input">Age: </label><input id="age-input" name="age" type="number" required/><br/>

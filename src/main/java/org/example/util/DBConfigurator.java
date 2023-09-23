@@ -12,9 +12,9 @@ public class DBConfigurator {
 //    private static String user = reader.getDbUser();
 //    private static String password = reader.getDbPassword();
 
-    private static String url = "jdbc:postgresql://192.168.0.106:5432/andersen";
-    private static String user = "andersen";
-    private static String password = "andersen";
+    private static String url = "jdbc:postgresql://127.0.0.1:5432/andersen";
+    private static String user = "postgres";
+    private static String password = "root";
     public static Connection getConnection (){
         if (connection == null){
             synchronized (DBConfigurator.class){
