@@ -25,11 +25,7 @@ public class UserController extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
     }
 
-/*    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
-    }
-
+/*
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp);

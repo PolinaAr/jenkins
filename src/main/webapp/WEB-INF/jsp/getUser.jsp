@@ -1,4 +1,3 @@
-<%@ page import="org.example.service.UserDtoFull" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
