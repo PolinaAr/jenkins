@@ -6,15 +6,13 @@
 </head>
 <body>
 
-<%UserDtoFull user =(UserDtoFull) request.getAttribute("user");%>
-
 <h2>Read existing User</h2>
 
     <div>
-        <h2>with id = <%=user.getId()%></h2>
-        <p>Name = <%=user.getName()%> </p>
-        <p>Lastname = <%=user.getLastname()%> </p>
-        <p>Age = <%=user.getAge()%> </p>
+        <h2>with id = ${user.id}</h2>
+        <p>Name = ${user.name}</p>
+        <p>Lastname = ${user.lastname}</p>
+        <p>Age = ${user.age}</p>
     </div>
 </body>
 </html>
