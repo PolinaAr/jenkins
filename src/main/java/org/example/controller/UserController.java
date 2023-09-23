@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.example.service.UserDtoCreate;
 import org.example.service.UserDtoFull;
 import org.example.service.UserService;
 import org.example.service.UserServiceImpl;
@@ -24,11 +23,5 @@ public class UserController extends HttpServlet {
         request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
     }
-
-/*
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
-    }*/
 
 }
