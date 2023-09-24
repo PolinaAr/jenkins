@@ -25,6 +25,8 @@
                 <td><c:out value="${user.name}"/></a></td>
                 <td><c:out value="${user.lastname}"/></td>
                 <td>${user.age}</td>
+                <td><a href="./users/update?id=${user.id}">
+                    <button>Update</button></a></td>
             </tr>
         </c:forEach>
     </table>
