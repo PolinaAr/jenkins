@@ -8,15 +8,12 @@ public class DBConfigurator {
 
     private static volatile Connection connection;
 
-    private static final PropertiesLoader props = new PropertiesLoader();
+    private static PropertiesLoader props = new PropertiesLoader();
 
-    private static final String url = props.getProperty("db.url");
-    private static final String user = props.getProperty("db.user");
-    private static final String password = props.getProperty("db.password");
+    private static String url = props.getDbUrl();
+    private static String user = props.getDbUser();
+    private static String password = props.getDbPassword();
 
-//    private static String url = "jdbc:postgresql://192.168.0.106:5432/andersen";
-//    private static String user = "andersen";
-//    private static String password = "andersen";
     public static Connection getConnection (){
         if (connection == null){
             synchronized (DBConfigurator.class){

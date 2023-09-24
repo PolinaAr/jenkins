@@ -1,29 +1,37 @@
 package org.example.util;
 
+import org.example.exception.DatabaseException;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesLoader {
 
-    public Properties loadProperties() {
-        Properties properties = new Properties();
-        ClassLoader classLoader = getClass().getClassLoader();
-        String pathToProperties = "application.properties";
+    private static final String LOCAL_BASE = "src/main/resources/application.properties";
+    private static Properties properties;
 
-        try (InputStream inputStream = classLoader.getResourceAsStream(pathToProperties)) {
-            if (inputStream != null) {
-                properties.load(inputStream);
-            } else {
-                System.err.println("Файл свойств '" + pathToProperties + "' не найден.");
-            }
+    public PropertiesLoader() {
+        try(BufferedReader reader = new BufferedReader(new FileReader(LOCAL_BASE))) {
+            properties = new Properties();
+            properties.load(reader);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DatabaseException("Can't read props for DB");
         }
-        return properties;
     }
 
-    public String getProperty(String key){
-        return loadProperties().getProperty(key);
+    public String getDbUser() {
+        return properties.getProperty("db.user");
+    }
+
+    public String getDbPassword() {
+        return properties.getProperty("db.password");
+    }
+
+    public String getDbUrl() {
+        return properties.getProperty("db.url");
     }
 }
