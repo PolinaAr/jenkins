@@ -27,6 +27,8 @@
                 <td>${user.age}</td>
                 <td><a href="./users/update?id=${user.id}">
                     <button>Update</button></a></td>
+                <td><a href="./users/delete?id=${user.id}">
+                                    <button>Delete</button></a></td>
             </tr>
         </c:forEach>
     </table>

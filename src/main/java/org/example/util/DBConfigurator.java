@@ -10,13 +10,10 @@ public class DBConfigurator {
 
     private static PropertiesLoader props = new PropertiesLoader();
 
-    private static String url = props.getProperty("db.url");
-    private static String user = props.getProperty("db.user");
-    private static String password = props.getProperty("db.password");
+    private static String url = props.getDbUrl();
+    private static String user = props.getDbUser();
+    private static String password = props.getDbPassword();
 
-//    private static String url = "jdbc:postgresql://192.168.43.142:5432/test";
-//    private static String user = "dima";
-//    private static String password = "dima";
     public static Connection getConnection (){
         if (connection == null){
             synchronized (DBConfigurator.class){

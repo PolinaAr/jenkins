@@ -1,31 +1,37 @@
 package org.example.util;
 
+import org.example.exception.DatabaseException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class PropertiesLoader {
-    private Map<String, String> properties = new HashMap<>();
+
+    private static final String LOCAL_BASE = "src/main/resources/application.properties";
+    private static Properties properties;
 
     public PropertiesLoader() {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("D:\\Study\\andersen\\database\\jenkins\\src\\main\\resources\\application.properties"));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] split = line.split("=");
-                properties.put(split[0], split[1]);
-                line = reader.readLine();
-            }
-            reader.close();
+        try(BufferedReader reader = new BufferedReader(new FileReader(LOCAL_BASE))) {
+            properties = new Properties();
+            properties.load(reader);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new DatabaseException("Can't read props for DB");
         }
-
     }
 
-    public String getProperty(String key){
-        return properties.get(key);
+    public String getDbUser() {
+        return properties.getProperty("db.user");
+    }
+
+    public String getDbPassword() {
+        return properties.getProperty("db.password");
+    }
+
+    public String getDbUrl() {
+        return properties.getProperty("db.url");
     }
 }
