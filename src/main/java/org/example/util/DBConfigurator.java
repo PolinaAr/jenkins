@@ -5,14 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConfigurator {
-
     private static volatile Connection connection;
-
-    private static PropertiesLoader props = new PropertiesLoader();
-
-    private static String url = props.getDbUrl();
-    private static String user = props.getDbUser();
-    private static String password = props.getDbPassword();
+    private static final PropertiesLoader props = new PropertiesLoader();
+    private static final String url = props.getDbUrl();
+    private static final String user = props.getDbUser();
+    private static final String password = props.getDbPassword();
 
     public static Connection getConnection (){
         if (connection == null){

@@ -5,33 +5,39 @@ import org.example.exception.DatabaseException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesLoader {
 
-    private static final String LOCAL_BASE = "src/main/resources/application.properties";
-    private static Properties properties;
+    public Properties loadProperties() {
+        Properties properties = new Properties();
+        ClassLoader classLoader = getClass().getClassLoader();
+        String pathToProperties = "application.properties";
 
-    public PropertiesLoader() {
-        try(BufferedReader reader = new BufferedReader(new FileReader(LOCAL_BASE))) {
-            properties = new Properties();
-            properties.load(reader);
+        try (InputStream inputStream = classLoader.getResourceAsStream(pathToProperties)) {
+            if (inputStream != null) {
+                properties.load(inputStream);
+            } else {
+                System.err.println("Файл свойств '" + pathToProperties + "' не найден.");
+            }
         } catch (IOException e) {
-            throw new DatabaseException("Can't read props for DB");
+            e.printStackTrace();
         }
+        return properties;
     }
 
     public String getDbUser() {
-        return properties.getProperty("db.user");
+        return loadProperties().getProperty("db.user");
     }
 
     public String getDbPassword() {
-        return properties.getProperty("db.password");
+        return loadProperties().getProperty("db.password");
     }
 
     public String getDbUrl() {
-        return properties.getProperty("db.url");
+        return loadProperties().getProperty("db.url");
     }
 }
