@@ -4,15 +4,26 @@
     <title>User</title>
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 <hr>
 <h2>Read existing User</h2>
-
-    <div>
-        <h2>with id = ${user.id}</h2>
-        <p>Name = ${user.name}</p>
-        <p>Lastname = ${user.lastname}</p>
-        <p>Age = ${user.age}</p>
-    </div>
+<table>
+    <tr>
+        <td>ID:</td>
+        <td><b>${user.id}</b></td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td><b>${user.name}</b></td>
+    </tr>
+    <tr>
+        <td>Lastname:</td>
+        <td><b>${user.lastname}</b></td>
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td><b>${user.age}</b></td>
+    </tr>
+</table>
 </body>
 </html>

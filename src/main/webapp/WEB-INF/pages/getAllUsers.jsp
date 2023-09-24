@@ -12,10 +12,10 @@
     <table border="1">
         <thead>
         <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Lastname</td>
-            <td>Age</td>
+            <td><b>ID</b></td>
+            <td><b>Name</b></td>
+            <td><b>Lastname</b></td>
+            <td><b>Age</b></td>
         </tr>
         </thead>
         <tbody>
