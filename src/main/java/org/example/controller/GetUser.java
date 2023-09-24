@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/users")// надо добавить ?id=
+@WebServlet("/users")
 public class GetUser extends HttpServlet {
 
     private final UserService userService = UserServiceImpl.getInstance();
@@ -24,11 +24,11 @@ public class GetUser extends HttpServlet {
             Long id = Long.parseLong(param);
             UserDtoFull user = userService.getById(id);
             request.setAttribute("user", user);
-            request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/getUser.jsp").forward(request, response);
         } else {
             List<UserDtoFull> users = userService.getAll();
             request.setAttribute("users", users);
-            request.getRequestDispatcher("/WEB-INF/jsp/getAllUsers.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/getAllUsers.jsp").forward(request, response);
         }
     }
 

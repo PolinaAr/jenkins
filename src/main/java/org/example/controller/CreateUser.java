@@ -20,7 +20,7 @@ public class CreateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/createUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/createUser.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -28,7 +28,7 @@ public class CreateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDtoFull userDtoFull = userService.create(getUserDtoCreate(request));
         request.setAttribute("user", userDtoFull);
-        request.getRequestDispatcher("/WEB-INF/jsp/getUser.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/getUser.jsp").forward(request, response);
     }
 
     private UserDtoCreate getUserDtoCreate(HttpServletRequest request) {

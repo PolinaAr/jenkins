@@ -4,7 +4,8 @@
     <title>User</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp" />
+<hr>
 <h2>Read existing User</h2>
 
     <div>
