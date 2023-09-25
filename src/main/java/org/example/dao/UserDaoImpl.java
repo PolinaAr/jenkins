@@ -121,7 +121,11 @@ public class UserDaoImpl implements UserDao{
                     .prepareStatement(DELETE);
             statement.setLong(1, id);
             int result = statement.executeUpdate();
-            return result == 1;
+            if (result == 1){
+                return true;
+            } else {
+                throw  new EntityNotFoundException("There is no user with id: " + id);
+            }
         } catch (SQLException e) {
             throw new DatabaseException("Can't delete user with id: " + id);
         }
